@@ -25,6 +25,8 @@ if len(sys.argv) < 1:
     help()
 installed = False
 for pack in packs:
+    if sys.argv[1] == "remove":
+        break
     pack = pack.strip().split("^")
     if pack[0].strip() == sys.argv[1]:
         os.chdir(os.path.expanduser("~") + "/Ccode/lib")
@@ -33,4 +35,8 @@ for pack in packs:
         installed = True
         break
 if not installed:
-    print("package not found!")
+    if not sys.argv[1] == "remove":
+        print("package not found!")
+if sys.argv[1] == "remove":
+    if os.path.exists(sys.argv[2]):
+        os.system("rm -rf " + sys.argv[2])
