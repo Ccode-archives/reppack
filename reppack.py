@@ -35,6 +35,7 @@ for pack in packs:
         if os.path.exists(sys.argv[1]):
             installed = True
             print("Already installed!")
+            break
         os.system("git clone --depth 1 -q " + pack[1].strip())
         print("Package installed!")
         installed = True
