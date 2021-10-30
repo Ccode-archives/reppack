@@ -38,5 +38,6 @@ if not installed:
     if not sys.argv[1] == "remove":
         print("package not found!")
 if sys.argv[1] == "remove":
+    os.chdir(os.path.expanduser("~") + "/Ccode/lib")
     if os.path.exists(sys.argv[2]):
         os.system("rm -rf " + sys.argv[2])
