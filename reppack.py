@@ -8,7 +8,7 @@ if platform.system() == "Windows":
 if not os.path.exists(os.path.expanduser("~") + "/Ccode"):
     raise OSError("Ccode language is not installed!")
 if not os.path.exists("pack-list"):
-    os.system("git clone -q https://github.com/Ccode-lang/pack-list")
+    os.system("git clone --depth 1 -q https://github.com/Ccode-lang/pack-list")
 
 packfile = open("pack-list/list.txt")
 packs = packfile.readlines()
@@ -17,6 +17,8 @@ packfile.close()
 
 def help():
     print("python reppack.py <package name>")
+    print("python reppack.py remove <package to remove>")
+    print("\n\nFor more info go to https://github.com/Ccode-lang/Ccode/wiki/package-manager")
     quit()
 
 
@@ -30,7 +32,7 @@ for pack in packs:
     pack = pack.strip().split("^")
     if pack[0].strip() == sys.argv[1]:
         os.chdir(os.path.expanduser("~") + "/Ccode/lib")
-        os.system("git clone -q " + pack[1].strip())
+        os.system("git clone --depth 1 -q " + pack[1].strip())
         print("Package installed!")
         installed = True
         break
