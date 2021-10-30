@@ -1,12 +1,21 @@
 import os
+import distutils.spawn
 import sys
 import platform
+
+
+def is_tool(name):
+  return distutils.spawn.find_executable(name) is not None
+
+
 # basic setup and checking
 os.chdir(os.path.abspath(os.path.dirname(__file__)))
 if platform.system() == "Windows":
     raise OSError("Don't run on Windows!")
 if not os.path.exists(os.path.expanduser("~") + "/Ccode"):
     raise OSError("Ccode language is not installed!")
+if not is_tool("git"):
+    raise OSError("Git is not installed")
 if not os.path.exists("pack-list"):
     os.system("git clone --depth 1 -q https://github.com/Ccode-lang/pack-list")
 else:
