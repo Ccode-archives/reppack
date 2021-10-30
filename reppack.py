@@ -9,6 +9,10 @@ if not os.path.exists(os.path.expanduser("~") + "/Ccode"):
     raise OSError("Ccode language is not installed!")
 if not os.path.exists("pack-list"):
     os.system("git clone --depth 1 -q https://github.com/Ccode-lang/pack-list")
+else:
+    os.chdir("pack-list")
+    os.system("git pull -q")
+    os.chdir("..")
 
 packfile = open("pack-list/list.txt")
 packs = packfile.readlines()
