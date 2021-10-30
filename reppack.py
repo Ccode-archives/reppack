@@ -10,7 +10,7 @@ if not os.path.exists(os.path.expanduser("~") + "/Ccode"):
 if not os.path.exists("pack-list"):
     os.system("git clone -q https://github.com/Ccode-lang/pack-list")
 
-packfile = open("list.txt")
+packfile = open("pack-list/list.txt")
 packs = packfile.readlines()
 packfile.close()
 
