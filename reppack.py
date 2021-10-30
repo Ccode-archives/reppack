@@ -32,6 +32,9 @@ for pack in packs:
     pack = pack.strip().split("^")
     if pack[0].strip() == sys.argv[1]:
         os.chdir(os.path.expanduser("~") + "/Ccode/lib")
+        if os.path.exists(sys.argv[1]):
+            installed = True
+            print("Already installed!")
         os.system("git clone --depth 1 -q " + pack[1].strip())
         print("Package installed!")
         installed = True
