@@ -5,7 +5,7 @@ import platform
 
 
 def is_tool(name):
-  return distutils.spawn.find_executable(name) is not None
+    return distutils.spawn.find_executable(name) is not None
 
 
 # basic setup and checking
@@ -44,7 +44,11 @@ for pack in packs:
     if sys.argv[1] == "remove" or sys.argv[1] == "refresh":
         installed = True
         break
+    pack_ = pack.strip()
     pack = pack.strip().split("^")
+    if pack_ == "" or pack_.startswith("$"):
+        # comments
+        continue
     if pack[0].strip() == sys.argv[1]:
         os.chdir(os.path.expanduser("~") + "/Ccode/lib")
         if os.path.exists(sys.argv[1]):
