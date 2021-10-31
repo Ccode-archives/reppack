@@ -41,7 +41,8 @@ if len(sys.argv) < 2:
     help()
 installed = False
 for pack in packs:
-    if sys.argv[1] == "remove":
+    if sys.argv[1] == "remove" or sys.argv[1] == "refresh":
+        installed = True
         break
     pack = pack.strip().split("^")
     if pack[0].strip() == sys.argv[1]:
@@ -56,8 +57,12 @@ for pack in packs:
         break
 
 if not installed:
-    if not sys.argv[1] == "remove":
-        print("Package not found!")
+    print("Package not found!")
+
+if sys.argv[1] == "refresh":
+    os.chdir("pack-list")
+    os.system("git pull -q")
+    os.chdir("..")
 
 if sys.argv[1] == "remove":
     os.chdir(os.path.expanduser("~") + "/Ccode/lib")
