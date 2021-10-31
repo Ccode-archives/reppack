@@ -55,7 +55,7 @@ for pack in packs:
         break
 
 if not installed:
-    if not sys.argv[1] == "remove" or sys.argv[1] == "refresh":
+    if not sys.argv[1] == "remove" or not sys.argv[1] == "refresh":
         print("Package not found!")
 
 if sys.argv[1] == "refresh":
