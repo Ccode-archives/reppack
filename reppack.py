@@ -31,6 +31,7 @@ packfile.close()
 def help():
     print("python reppack.py <package name>")
     print("python reppack.py remove <package to remove>")
+    print("python reppack.py refresh")
     print("\n\nFor more info go to https://github.com/Ccode-lang/Ccode/wiki/package-manager")
     quit()
 
