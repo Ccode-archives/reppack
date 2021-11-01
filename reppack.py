@@ -1,4 +1,5 @@
 import os
+import urllib.request as internet
 import distutils.spawn
 import sys
 import platform
@@ -6,6 +7,12 @@ import platform
 
 def is_tool(name):
     return distutils.spawn.find_executable(name) is not None
+def connected(url = "https://google.com", timeout = 3):
+    try:
+        internet.urlopen(url, timeout=timeout)
+        return True
+    except:
+        return False
 
 
 # basic setup and checking
@@ -18,6 +25,8 @@ if not is_tool("git"):
     raise OSError("Git is not installed")
 if not os.path.exists("pack-list"):
     os.system("git clone --depth 1 -q https://github.com/Ccode-lang/pack-list")
+if not connected():
+    raise OSError("No internet connection")
 
 packfile = open("pack-list/list.txt")
 packs = packfile.readlines()
