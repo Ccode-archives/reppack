@@ -55,7 +55,7 @@ for pack in packs:
     if pack_ == "" or pack_.startswith("$"):
         # comments
         continue
-    if pack[0].strip() == sys.argv[1]:
+    elif pack[0].strip() == sys.argv[1]:
         os.chdir(os.path.expanduser("~") + "/Ccode/lib")
         if os.path.exists(sys.argv[1]):
             installed = True
