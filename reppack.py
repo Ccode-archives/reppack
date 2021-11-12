@@ -49,7 +49,7 @@ for pack in packs:
     if sys.argv[1] == "remove" or sys.argv[1] == "refresh":
         installed = True
         break
-    #data reder
+    #data reader
     pack_ = pack.strip()
     pack = pack.strip().split("^")
     if pack_ == "" or pack_.startswith("$"):
